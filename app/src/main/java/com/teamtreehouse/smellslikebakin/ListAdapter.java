@@ -10,6 +10,12 @@ import android.widget.TextView;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
 
+    private final ListFragment.OnRecipeSelectedInterface mListener;
+
+    public ListAdapter(ListFragment.OnRecipeSelectedInterface listener) {
+        mListener = listener;
+    }
+
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,7 +50,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
         @Override
         public void onClick(View v) {
-
+            mListener.onListRecipeSelected(getAdapterPosition());
         }
     }
 }
